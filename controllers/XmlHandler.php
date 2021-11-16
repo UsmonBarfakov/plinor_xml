@@ -28,7 +28,7 @@ class XmlHandler
             exit;
         }
         $this->fileValidator = new FileValidator($_FILES['file']['tmp_name'], $_FILES['file']['name']);
-        $this->uploader = new Uploader($_FILES['file']['tmp_name'], $_FILES['file']['name']);
+
         try {
             if (!$this->fileValidator->isFileExists()) {
                 throw new Exception('Error: There is no file exists!');
@@ -45,15 +45,27 @@ class XmlHandler
             }
 
             //Save - move file to upload folder
+            $this->uploader = new Uploader($_FILES['file']['tmp_name'], $_FILES['file']['name']);
             if (!$this->uploader->uploadFile(UPLOAD_DIR)) {
                 throw new Exception("Error: Can't save file!");
             }
 
-            //insert file name to BD
-            $this->filesModel->insert([
-                'file_name' => "'" . $this->uploader->getFileName() . "'",
-                'file_path' => "'" . $this->uploader->getFilePath() . "'",
-            ]);
+            //Check file to early added. If yes, it's mean that file was updated
+            $result = $this->filesModel->select('*', "file_name = '{$this->uploader->getFileName()}'");
+            if ($result) {
+                //update exist file in DB
+                $currentDate = date('Y-m-d H:i:s');
+                $this->filesModel->update([
+                    'updated_at' => "'{$currentDate}'"
+                ], "id = {$result[0]['id']}");
+
+            } else {
+                //insert file name to BD
+                $this->filesModel->insert([
+                    'file_name' => "'" . $this->uploader->getFileName() . "'",
+                    'file_path' => "'" . $this->uploader->getFilePath() . "'",
+                ]);
+            }
 
             $fileTable = new Table();
             $fileTable->run();

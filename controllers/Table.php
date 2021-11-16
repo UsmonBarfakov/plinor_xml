@@ -16,7 +16,7 @@ class Table
 
     public function run(): void
     {
-        $files = $this->filesModel->select('`id`, `file_name`, `file_path`, `created_at`',);
+        $files = $this->filesModel->select('`id`, `file_name`, `file_path`, `created_at`, `updated_at`',);
         $view = new View();
         $view->render('list', [
             'files' => $files,

@@ -48,12 +48,17 @@ class DataBase
         }
     }
 
+    /**
+     * @param string $fields
+     * @param string|null $where
+     * @param string|null $order_by
+     * @return array
+     */
     public function select(string $fields = '*', string $where = null, string $order_by = null): array
     {
-        $this->query = "SELECT {$fields} FROM {$this->table} WHERE deleted_at IS NULL ";
-        $this->query .= $where ? "WHERE {$where} " : '';
-        $this->query .= $order_by ? "ORDER_BY {$order_by} " : '';
-
+        $this->query = "SELECT {$fields} FROM {$this->table}";
+        $this->query .= $where ? " WHERE {$where} AND deleted_at IS NULL" : ' WHERE deleted_at IS NULL';
+        $this->query .= $order_by ? " ORDER_BY {$order_by} " : '';
         $result = $this->connection->query($this->query);
         if ($result->num_rows > 0) {
             $rows = [];
@@ -66,6 +71,24 @@ class DataBase
         }
     }
 
+    /**
+     * @param array $data
+     * @param string $where
+     * @return bool
+     */
+    public function update(array $data, string $where): bool
+    {
+        $this->query = "UPDATE {$this->table} SET";
+        foreach ($data as $field => $value) {
+            $this->query .= " {$field} = {$value}";
+        }
+        $this->query .= " WHERE {$where}";
+        return $this->connection->query($this->query);
+    }
+
+    /**
+     * @param string $table
+     */
     public function setTable(string $table): void
     {
         $this->table = $table;
@@ -80,9 +103,6 @@ class DataBase
 
     public function __destruct()
     {
-
         $this->connectionClose();
     }
-
-
 }
