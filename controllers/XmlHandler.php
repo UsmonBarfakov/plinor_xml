@@ -23,6 +23,10 @@ class XmlHandler
 
     public function run()
     {
+        if (!isset($_FILES['file']) || empty($_FILES['file'])) {
+            $this->showError('Please, select file and upload it <a href="'.BASE_URL.'">here</a>');
+            exit;
+        }
         $this->fileValidator = new FileValidator($_FILES['file']['tmp_name'], $_FILES['file']['name']);
         $this->uploader = new Uploader($_FILES['file']['tmp_name'], $_FILES['file']['name']);
         try {
@@ -55,11 +59,16 @@ class XmlHandler
             $fileTable->run();
 
         } catch (Exception $e) {
-            $view = new View();
-            $view->render('error', [
-                'title' => 'Ой! Произошла ошибка',
-                'msg' => $e->getMessage()
-            ]);
+            $this->showError($e->getMessage());
         }
+    }
+
+    public function showError(string $text):void
+    {
+        $view = new View();
+        $view->render('error', [
+            'title' => 'Ой! Произошла ошибка',
+            'msg' => $text
+        ]);
     }
 }
