@@ -1,0 +1,27 @@
+{
+    "name": "plinor/xml",
+    "description": "Test task from LLC 'Plinor'",
+    "authors": [
+        {
+            "name": "Usmon Barfakov",
+            "email": "barfakov@gmail.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "lib/XmlValidator.php",
+            "lib/DataBase.php",
+            "configs/config.php",
+            "configs/db.php",
+            "controllers/XmlHandler.php",
+            "controllers/Table.php",
+            "views/View.php",
+            "models/Xml_model.php",
+            "models/FilesModel.php"
+        ]
+    },
+    "require": {
+        "ext-SimpleXML": "*",
+        "ext-MySqli": "*"
+    }
+}
