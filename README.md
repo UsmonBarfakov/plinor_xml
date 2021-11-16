@@ -2,7 +2,7 @@
 
 Test project from LLC "Plinor".
 
-##Linter status
+## Linter status
 
 ## Install
 ```shell script
