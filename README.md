@@ -1,6 +1,7 @@
 # PHP XML validator 
 
 Test project from LLC "Plinor".
+I tried to follow SOLID pattern/
 
 ## Linter status
 
