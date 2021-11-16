@@ -12,6 +12,7 @@ $request = "$_SERVER[REQUEST_URI]";
 
 switch ($request){
     case '/index.php/upload':
+    case 'upload':
         $xmlHandler = new XmlHandler();
         $xmlHandler->run();
         break;
@@ -19,7 +20,6 @@ switch ($request){
         $table = new Table();
         $table->run();
         break;
-    case '/index.php/create':
     default:
         $view = new View();
         $view->render('create', [

@@ -11,12 +11,13 @@
         "files": [
             "lib/XmlValidator.php",
             "lib/DataBase.php",
+            "lib/FileValidator.php",
+            "lib/Uploader.php",
             "configs/config.php",
             "configs/db.php",
             "controllers/XmlHandler.php",
             "controllers/Table.php",
             "views/View.php",
-            "models/Xml_model.php",
             "models/FilesModel.php"
         ]
     },

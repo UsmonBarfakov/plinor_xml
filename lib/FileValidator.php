@@ -1,13 +1,13 @@
 <?php
-namespace App\Models\Xml;
+namespace App\Lib;
 
 use Exception;
+use SimpleXMLElement;
 
-class Xml_model
+class FileValidator
 {
     private string $fileTempName;
     private string $fileName;
-    private string $destination;
 
     public function __construct(string $tmp_name, string $name)
     {
@@ -36,7 +36,7 @@ class Xml_model
 
     /**
      * Extract file data and create SimpleXMLElement
-     * @return false|\SimpleXMLElement
+     * @return false|SimpleXMLElement
      * @throws Exception
      */
     function getXmlFromUploadedFile()
@@ -49,16 +49,6 @@ class Xml_model
     }
 
     /**
-     * @param string $uploadDir - dir where will moved file from temp dir on server
-     * @return bool
-     */
-    public function saveXmlFile(string $uploadDir): bool
-    {
-        $this->destination = $uploadDir . '/' . $this->fileName;
-        return move_uploaded_file($this->fileTempName, $this->destination);
-    }
-
-    /**
      * @return string
      */
     public function getFileName(): string
@@ -66,10 +56,7 @@ class Xml_model
         return $this->fileName;
     }
 
-    public function getFilePath(): string
-    {
-      return $this->destination;
+    public function setDestination($path) {
+        $this->destination = $path;
     }
-
-
 }
