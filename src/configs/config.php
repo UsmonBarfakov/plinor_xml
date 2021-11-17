@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Configs;
+namespace App\configs;
 
-define('BASE_URL', 'http://plinor_xml');
+define('BASE_URL', 'http://plinor_xml/');
 define('ROOT', $_SERVER['DOCUMENT_ROOT']);
 define('UPLOAD_DIR', $_SERVER['DOCUMENT_ROOT'] . 'upload');
 define('XPATH_QUERY', "//Component[

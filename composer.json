@@ -8,21 +8,15 @@
         }
     ],
     "autoload": {
+        "psr-4": {"App\\": "src/"},
         "files": [
-            "lib/XmlValidator.php",
-            "lib/DataBase.php",
-            "lib/FileValidator.php",
-            "lib/Uploader.php",
-            "configs/config.php",
-            "configs/db.php",
-            "controllers/XmlHandler.php",
-            "controllers/Table.php",
-            "views/View.php",
-            "models/FilesModel.php"
+            "src/configs/config.php",
+            "src/configs/db.php"
         ]
     },
     "require": {
         "ext-SimpleXML": "*",
-        "ext-MySqli": "*"
+        "ext-MySqli": "*",
+        "ext-json": "*"
     }
 }

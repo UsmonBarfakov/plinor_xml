@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\models;
 
-use App\Lib\DataBase;
+use App\lib\DataBase;
 
 class FilesModel extends DataBase
 {

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="<?=BASE_URL?>/css/style.css" type="text/css">
+    <link rel="stylesheet" href="<?=BASE_URL?>css/style.css" type="text/css">
+    <script src="<?=BASE_URL?>js/script.js"></script>
     <meta charset="UTF-8">
     <title>Обработка и анализ XML</title>
 </head>

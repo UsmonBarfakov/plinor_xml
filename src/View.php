@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Views;
+namespace App;
 
+use App\configs;
 class View
 {
     private string $header = ROOT . 'views/templates/header.php';

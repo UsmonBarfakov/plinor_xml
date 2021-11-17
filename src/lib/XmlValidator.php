@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Lib\Xml;
+namespace App\lib;
 
 
 class XmlValidator

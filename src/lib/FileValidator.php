@@ -1,5 +1,5 @@
 <?php
-namespace App\Lib;
+namespace App\lib;
 
 use Exception;
 use SimpleXMLElement;

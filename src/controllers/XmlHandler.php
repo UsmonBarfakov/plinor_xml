@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Controllers;
+namespace App\controllers;
 
-use App\Lib\Uploader;
-use App\Lib\Xml\XmlValidator;
+use App\lib\Uploader;
+use App\lib\XmlValidator;
 use App\Models\FilesModel;
-use App\Lib\FileValidator;
-use App\Views\View;
+use App\lib\FileValidator;
+use App\View;
 use Exception;
 
 class XmlHandler
@@ -75,6 +75,9 @@ class XmlHandler
         }
     }
 
+    /**
+     * @param string $text
+     */
     public function showError(string $text):void
     {
         $view = new View();

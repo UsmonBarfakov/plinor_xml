@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Controllers;
+namespace App\controllers;
 
 use App\Models\FilesModel;
-use App\Views\View;
+use App\View;
 
 class Table
 {
@@ -22,6 +22,11 @@ class Table
             'files' => $files,
             'title' => 'Таблица загруженных XML фалов',
         ]);
+    }
 
+    public function delete(int $id):bool
+    {
+        $currentDate = date('Y-m-d H:i:s');
+        return $this->filesModel->update(['deleted_at' => "'{$currentDate}'"], "id = '{$id}'");
     }
 }
