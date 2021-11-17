@@ -2,7 +2,7 @@
 
 namespace Root;
 
-use App\api\XmlApi;
+use App\controllers\api\XmlApi;
 use App\controllers\Table;
 use App\controllers\XmlHandler;
 use App\View;

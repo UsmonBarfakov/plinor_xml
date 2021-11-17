@@ -2,9 +2,11 @@ let basUrl = 'http://plinor_xml/';
 
 function deleteFile(id, rowId)
 {
+    //get confirmation before delete
     if(!confirm('Удалить файл?')) {
         return
     }
+    //send AJAX request for delete to API with callback function
     sendAJAX(basUrl+'index.php/api', { "id": id, "method": "delete"}, function (str) {
         let response = JSON.parse(this.responseText);
         alert(response.message);
@@ -33,7 +35,7 @@ function sendAJAX(url, data, callBack = null)
 }
 
 function sortTable(n) {
-    var table, rows, switching, i, x, y, shouldSwitch, dir, switchCount = 0;
+    let table, rows, switching, i, x, y, shouldSwitch, dir, switchCount = 0;
     table = document.getElementById("filesTable");
     switching = true;
     // Set the sorting direction to ascending:

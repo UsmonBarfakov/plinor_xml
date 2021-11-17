@@ -1,6 +1,6 @@
 <?php
 
-namespace App\api;
+namespace App\controllers\api;
 
 use App\lib\Rest;
 use App\models\FilesModel;
@@ -16,6 +16,7 @@ class XmlApi {
 
     public function run()
     {
+        error_reporting(0);
         $data = json_decode(file_get_contents("php://input"));
         try {
             switch ($data->method) {
