@@ -43,9 +43,8 @@ class DataBase
 
         if ($this->connection->query($this->query) === true) {
             return $this->connection->insert_id;
-        } else {
-            return false;
         }
+        return false;
     }
 
     /**
@@ -60,15 +59,14 @@ class DataBase
         $this->query .= $where ? " WHERE {$where} AND deleted_at IS NULL" : ' WHERE deleted_at IS NULL';
         $this->query .= $order_by ? " ORDER_BY {$order_by} " : '';
         $result = $this->connection->query($this->query);
+        $rows = [];
         if ($result->num_rows > 0) {
-            $rows = [];
             while ($row = $result->fetch_assoc()) {
                 $rows[] = $row;
             }
-            return $rows;
-        } else {
-            return [];
         }
+        return $rows;
+
     }
 
     /**
