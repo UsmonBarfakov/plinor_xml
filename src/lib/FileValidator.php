@@ -30,8 +30,8 @@ class FileValidator
      */
     function isFileXMLExtension(string $ext): bool
     {
-        $extension = pathinfo($this->fileName, PATHINFO_EXTENSION);//function returned string or array
-        return $extension == $ext;//because previous comment here used in_array()
+        $extension = pathinfo($this->fileName, PATHINFO_EXTENSION);
+        return $extension == $ext;
     }
 
     /**
@@ -54,9 +54,5 @@ class FileValidator
     public function getFileName(): string
     {
         return $this->fileName;
-    }
-
-    public function setDestination($path) {
-        $this->destination = $path;
     }
 }

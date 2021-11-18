@@ -23,10 +23,4 @@ class Table
             'title' => 'Таблица загруженных XML фалов',
         ]);
     }
-
-    public function delete(int $id):bool
-    {
-        $currentDate = date('Y-m-d H:i:s');
-        return $this->filesModel->update(['deleted_at' => "'{$currentDate}'"], "id = '{$id}'");
-    }
 }
